@@ -1,0 +1,17 @@
+pipeline {
+    agent any 
+
+    environment {
+        def myString = "Hello world"
+        def myNumber = 10
+        def myBool = true
+    }
+
+    stages {
+        stage("Demo") {
+            steps {
+
+            }
+        }
+    }
+}
