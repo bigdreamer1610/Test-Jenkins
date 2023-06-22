@@ -1,0 +1,15 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage("Test") {
+            steps {
+                echo 'Test build script nek'
+            }
+        }
+
+        stage("Build Remote") {
+            build job: 'boolPipeline', parameters: [[$class: 'BooleanParameterValue', name: 'myBoolean', value: true]]
+        }
+    }
+}

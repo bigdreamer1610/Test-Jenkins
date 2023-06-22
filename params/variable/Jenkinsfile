@@ -1,6 +1,7 @@
 pipeline {
     agent any 
 
+    // to define variable
     environment {
         def myString = "Hello world"
         def myNumber = 10
@@ -10,7 +11,9 @@ pipeline {
     stages {
         stage("Demo") {
             steps {
-
+                echo "My String: ${myString}"
+                echo "My number: ${myNumber}"
+                echo "My bool: ${myBool}"
             }
         }
     }

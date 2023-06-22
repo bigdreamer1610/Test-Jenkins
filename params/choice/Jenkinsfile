@@ -2,13 +2,30 @@ pipeline {
     agent any
 
     parameters {
-        choice(choices: ["Test", "DEV", "QA", "PROD"], description: "Which environment to deploy in", environment: "deployEnv")
+        choice(choices: ["Test", "DEV", "QA", "PROD"], description: "Which environment to deploy in", name: "deployEnv")
     }
 
     stages {
         stage("Demo") {
             steps {
                 echo "booleanParam is set to: ${params.deployEnv}"
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any 
+    parameters {
+        choice(choices: ["Hello", "Hi", "Annyeong"], description: "Say hello", name: "howToGreet")
+        string(defaultValue: "defaultText", description: "Test String thui", name: "howToString")
+        booleanParam(defaultValue: false, description: "Test Bool thui", name: "howToBoolean")
+    }
+
+    stages {
+        stage("Deploy") {
+            steps {
+                echo "String set to ${params.howToString} \nBoolean set to ${params.howToBoolean} for option ${params.howToGreet}"
             }
         }
     }
